@@ -3,6 +3,7 @@ from datetime import datetime,timedelta,timezone
 import requests
 
 def get_data(api_key, part, order,search_query, maxResults,publishedAfter):
+    """ Get data from Youtube's API by passing params """
     url = f"https://youtube.googleapis.com/youtube/v3/search?" \
           f"part={part}&" \
           f"maxResults={maxResults}&" \
@@ -14,6 +15,7 @@ def get_data(api_key, part, order,search_query, maxResults,publishedAfter):
 
 
 def get_previous_time():
+    """ Get latest timestamp before 10 seconds """
     utc_past_hour = datetime.utcnow() + timedelta(minutes=-10)
     my_time = str(utc_past_hour.replace(tzinfo=timezone.utc)).split(' ')
     return f"{my_time[0]}T{my_time[1][:-6]}Z"

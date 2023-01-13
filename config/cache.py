@@ -4,7 +4,7 @@ from django.conf import settings
 import os
 
 
-
+""" Redis Hash to operate with redis """
 class RedisHash():
     def __init__(self) -> None:
         self.redisClient = redis.StrictRedis(

@@ -13,6 +13,7 @@ import os
 # Create your views here.
 
 class GetVideosByQueryView(generics.GenericAPIView,mixins.ListModelMixin):
+    """ API View to fetch youtube data from the database """
     def get(self,request,*args,**kwargs):
         query = request.GET.get("query")
         tag_title = request.GET.get("title")

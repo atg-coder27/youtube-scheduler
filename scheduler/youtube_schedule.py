@@ -9,6 +9,7 @@ from .utils import *
 from . import constants
 
 def get_maximum_selected_value():
+    """ Selecting thhe tag with maximum clicks """
     try:
         query_tags = RedisHash().get_all_key_values("TAGS")
         search_query = None
@@ -27,6 +28,7 @@ def get_maximum_selected_value():
         return None
 
 def schedule():
+    """ Schduler which runs for every 20 seconds """
     search_query = get_maximum_selected_value()
     if search_query == None:
         search_query = constants.SEARCH_QUERY
@@ -61,10 +63,6 @@ def schedule():
                         can_break = True
 
                     except Exception as e:
-                        '''
-                        Only unique entries will be saved.
-                        Uniqueness is identified using video_id from youtube.com
-                        '''
                         print(e)
                 if can_break:
                     break
